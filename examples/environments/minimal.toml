@@ -1,0 +1,5 @@
+name = "minimal"
+description = "Only the greeting tool"
+
+[packages]
+hello = "1.0.0"

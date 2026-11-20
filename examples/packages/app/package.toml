@@ -1,0 +1,14 @@
+name = "app"
+version = "2.0.0"
+description = "An example application with two dependencies"
+license = "MIT"
+conflicts = ["legacy <1.0.0"]
+
+[dependencies]
+hello = "^1.0.0"
+libmath = ">=1.0.0,<2.0.0"
+
+[[files]]
+source = "bin/app"
+target = "bin/app"
+mode = "0755"

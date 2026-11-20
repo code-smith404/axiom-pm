@@ -1,0 +1,8 @@
+name = "libmath"
+version = "1.2.0"
+description = "A tiny pure-Python math library"
+license = "MIT"
+provides = ["math"]
+
+# With no [[files]] table, everything under files/ is installed at the same
+# relative path. Executable bits become 0755, everything else 0644.

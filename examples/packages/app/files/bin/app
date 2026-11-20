@@ -1,0 +1,10 @@
+#!/bin/sh
+# Use the dependencies installed next to this package in the same profile.
+set -eu
+root="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+export PYTHONPATH="$root/lib${PYTHONPATH:+:$PYTHONPATH}"
+"$root/bin/hello" "${1:-axiom}"
+python3 - <<'PY'
+from libmath import clamp
+print("clamped:", clamp(11, 0, 10))
+PY

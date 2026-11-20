@@ -1,0 +1,5 @@
+#!/bin/sh
+# Greet the world, or the person named in $1.
+set -eu
+target="${1:-world}"
+printf 'hello, %s\n' "$target"

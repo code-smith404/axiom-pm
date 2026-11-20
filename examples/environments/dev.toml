@@ -1,0 +1,17 @@
+name = "dev"
+description = "The example development environment"
+includes = ["base.toml"]
+
+[packages]
+app = "^2.0.0"
+hello = "^1.0.0"
+
+[variables]
+APP_ENV = "development"
+
+[[environment_constraints]]
+kind = "os"
+name = "system"
+operator = "=="
+value = "linux"
+message = "the example packages use POSIX shell scripts"

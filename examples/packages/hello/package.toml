@@ -1,0 +1,16 @@
+name = "hello"
+version = "1.0.0"
+description = "A tiny greeting tool used by the examples"
+license = "MIT"
+homepage = "https://example.invalid/hello"
+
+# Explicit file entries let a package rename payload files on install.
+[[files]]
+source = "bin/hello"
+target = "bin/hello"
+mode = "0755"
+
+[[files]]
+source = "share/hello/message.txt"
+target = "share/hello/message.txt"
+mode = "0644"

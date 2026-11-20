@@ -1,0 +1,9 @@
+name = "base"
+description = "Variables and libraries shared by the example environments"
+
+[packages]
+libmath = "^1.0.0"
+
+[variables]
+AXIOM_EXAMPLE = "1"
+GREETING_STYLE = "plain"
