@@ -426,6 +426,18 @@ def snapshot_from_solution(
                 files=tuple(sorted(records, key=lambda item: item.target)),
             )
         )
+
+    # A file cannot also be the directory of another installed file.
+    for target, owner in targets.items():
+        parts = target.split("/")
+        for index in range(1, len(parts)):
+            parent = "/".join(parts[:index])
+            if parent in targets:
+                raise AxiomError(
+                    f"install conflict: {targets[parent]} installs the file "
+                    f"{parent!r}, but {owner} installs {target!r} inside it"
+                )
+
     return Snapshot(
         environment=environment.name,
         packages=tuple(packages),

@@ -122,6 +122,17 @@ class SnapshotTests(unittest.TestCase):
             build_snapshot([one, two], files=files)
         self.assertIn("conflict", str(caught.exception))
 
+    def test_file_and_directory_collision_is_rejected(self):
+        one = package("a", "1.0.0")
+        two = package("b", "1.0.0")
+        files = {
+            "a": {"bin/tool": (b"file", "0755")},
+            "b": {"bin/tool/extra": (b"nested", "0644")},
+        }
+        with self.assertRaises(AxiomError) as caught:
+            build_snapshot([one, two], files=files)
+        self.assertIn("install conflict", str(caught.exception))
+
     def test_diff_reports_add_remove_change(self):
         before = build_snapshot(
             [package("a", "1.0.0"), package("b", "1.0.0")],
